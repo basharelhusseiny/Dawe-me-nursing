@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://dawe-me-nursing.vercel.app/
+
+# Sitemaps
+Sitemap: https://dawe-me-nursing.vercel.app/sitemap.xml
