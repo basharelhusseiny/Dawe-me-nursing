@@ -1,10 +1,7 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
 
-const Navbar = ({ navLinks }) => {
-  const [activeLink, setActiveLink] = useState("#home");
-
+const Navbar = ({ navLinks, activeLink, setActiveLink }) => {
   return (
     <nav>
       <ul className="hidden md:flex items-center justify-between gap-8 font-bold">

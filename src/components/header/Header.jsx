@@ -7,15 +7,35 @@ import { VscClose } from "react-icons/vsc";
 import { IoMenuOutline } from "react-icons/io5";
 import { useMobileMenu } from "@/context/MobileMenuContext";
 import MobileMenu from "./MobileMenu";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 const Header = () => {
   const { isMobMenuOpen, setIsMobMenuOpen } = useMobileMenu();
+  const [activeLink, setActiveLink] = useState("#home");
+  const pathname = usePathname();
 
   const navLinks = [
-    { id: crypto.randomUUID(), title: "الرئيسية", href: "#home" },
-    { id: crypto.randomUUID(), title: "من نحن", href: "#about" },
-    { id: crypto.randomUUID(), title: "خدماتنا", href: "#services" },
-    { id: crypto.randomUUID(), title: "تواصل معنا", href: "#contact" },
+    {
+      id: crypto.randomUUID(),
+      title: "الرئيسية",
+      href: pathname === "/" ? "#home" : "/#home",
+    },
+    {
+      id: crypto.randomUUID(),
+      title: "من نحن",
+      href: pathname === "/" ? "#about" : "/#about",
+    },
+    {
+      id: crypto.randomUUID(),
+      title: "خدماتنا",
+      href: pathname === "/" ? "#services" : "/#services",
+    },
+    {
+      id: crypto.randomUUID(),
+      title: "تواصل معنا",
+      href: "/contact",
+    },
   ];
 
   return (
@@ -35,7 +55,10 @@ const Header = () => {
               className={`flex md:hidden hover:text-sky-600 duration-300`}
             />
           )}
-          <Link href="#home">
+          <Link
+            href={pathname === "/" ? "#home" : "/#home"}
+            onClick={() => setActiveLink("#home")}
+          >
             <Image
               src="/images/logo.jpg"
               alt="Dawe Me logo"
@@ -46,10 +69,18 @@ const Header = () => {
             />
           </Link>
           <div className="hidden md:flex">
-            <Navbar navLinks={navLinks} />
+            <Navbar
+              navLinks={navLinks}
+              activeLink={activeLink}
+              setActiveLink={setActiveLink}
+            />
           </div>
           <WhatsAppButton />
-          <MobileMenu navLinks={navLinks} />
+          <MobileMenu
+            navLinks={navLinks}
+            activeLink={activeLink}
+            setActiveLink={setActiveLink}
+          />
         </div>
       </div>
     </header>

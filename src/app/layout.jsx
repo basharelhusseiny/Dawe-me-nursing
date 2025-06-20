@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import MobileMenuProvider from "@/context/MobileMenuContext";
+import FixedButtons from "@/ui/FixedButtons";
 
 const cairo = Cairo({
   subsets: ["latin"],
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
           <Header />
           <main className="flex-grow mt-[71px]">{children}</main>
           <Footer />
+          <FixedButtons />
         </MobileMenuProvider>
       </body>
     </html>

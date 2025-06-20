@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import {
   FaFlask,
@@ -81,7 +80,7 @@ const ServicesSection = () => {
   return (
     <section
       id="services"
-      className="py-16 bg-gradient-to-b from-white to-sky-200"
+      className="py-16 bg-gradient-to-b from-white to-sky-200 scroll-mt-[71px]"
     >
       <div className="container mx-auto px-5">
         <div className="text-center mb-12">
@@ -119,7 +118,7 @@ const ServicesSection = () => {
                 <h3 className="text-xl font-bold text-sky-700 mb-2">
                   {service.title}
                 </h3>
-                <p className="text-gray-700 text-sm">{service.description}</p>
+                <p className="text-gray-700 text-[15px]">{service.description}</p>
               </div>
             </div>
           ))}
