@@ -6,7 +6,7 @@ const WhatsAppButton = () => {
   const phone = "201062892767";
   const message = "مرحبًا، أود حجز موعد مع داوي Me";
   const encodedMessage = encodeURIComponent(message);
-  const url = `https://wa.me/${phone}?text=${encodedMessage}`;
+  const url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodedMessage}`;
 
   return (
     <Link

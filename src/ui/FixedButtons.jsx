@@ -6,7 +6,7 @@ const FixedButtons = () => {
     <div className="fixed bottom-5 left-5 flex flex-col gap-2 z-50">
       {/* زر واتساب */}
       <Link
-        href="https://wa.me/201062892767"
+        href="https://api.whatsapp.com/send?phone=201062892767"
         target="_blank"
         rel="noopener noreferrer"
         className="bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition"
