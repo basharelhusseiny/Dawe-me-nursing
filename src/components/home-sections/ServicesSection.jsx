@@ -81,14 +81,19 @@ const ServicesSection = () => {
     <section
       id="services"
       className="py-16 bg-gradient-to-b from-white to-sky-200 scroll-mt-[71px]"
+      itemScope
+      itemType="https://schema.org/MedicalOrganization"
     >
       <div className="container mx-auto px-5">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-sky-800 mb-2">
+          <h2 className="text-3xl font-bold text-sky-800 mb-2" itemProp="name">
             خدماتنا الطبية المتكاملة
           </h2>
           <div className="w-24 h-1 bg-sky-500 mx-auto mb-6"></div>
-          <p className="max-w-2xl mx-auto text-gray-600 mb-8">
+          <p
+            className="max-w-2xl mx-auto text-gray-600 mb-8"
+            itemProp="description"
+          >
             اسرع وافضل فريق طبي متكامل لتقديم خدمات موثوقة في محافظات القاهرة
             الكبرى
           </p>
@@ -99,13 +104,16 @@ const ServicesSection = () => {
             <div
               key={service.id}
               className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all hover:translate-y-[-5px]"
+              itemScope
+              itemType="https://schema.org/MedicalService"
             >
               <div className="relative h-40">
                 <Image
                   src={service.image}
-                  alt={service.title}
+                  alt={`خدمة ${service.title} - ${service.description}`} // تحسين alt للـ SEO
                   fill
                   className="object-cover"
+                  itemProp="image"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-sky-900/60 to-transparent"></div>
                 <div className="absolute bottom-0 right-0 p-4">
@@ -115,10 +123,15 @@ const ServicesSection = () => {
                 </div>
               </div>
               <div className="p-5">
-                <h3 className="text-xl font-bold text-sky-700 mb-2">
+                <h3
+                  className="text-xl font-bold text-sky-700 mb-2"
+                  itemProp="serviceType"
+                >
                   {service.title}
                 </h3>
-                <p className="text-gray-700 text-[15px]">{service.description}</p>
+                <p className="text-gray-700 text-[15px]" itemProp="description">
+                  {service.description}
+                </p>
               </div>
             </div>
           ))}

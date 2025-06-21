@@ -19,24 +19,28 @@ const GoalsSection = () => {
       icon: <FaStarOfLife className="text-4xl text-sky-600 mb-3" />,
       title: "أعلى جودة",
       description: "توفير خدمات طبية بأعلى جودة واحترافية.",
+      schemaType: "MedicalOrganization",
     },
     {
       id: 3,
       icon: <FaHandHoldingMedical className="text-4xl text-sky-600 mb-3" />,
       title: "تسهيل الحياة",
       description: "تسهيل حياة المرضى وأسرهم.",
+      schemaType: "PatientExperience",
     },
     {
       id: 4,
       icon: <FaHospital className="text-4xl text-sky-600 mb-3" />,
       title: "تقليل العناء",
       description: "تقليل الحاجة للذهاب إلى المستشفيات.",
+      schemaType: "MedicalService",
     },
     {
       id: 5,
       icon: <FaHome className="text-4xl text-sky-600 mb-3" />,
       title: "بيئة آمنة",
       description: "دعم تعافي المرضى في بيئة مريحة وآمنة.",
+      schemaType: "MedicalCondition",
     },
   ];
 
@@ -52,7 +56,13 @@ const GoalsSection = () => {
   };
 
   return (
-    <section id="goals" className="py-16 bg-white overflow-hidden" ref={ref}>
+    <section
+      id="goals"
+      className="py-16 bg-white overflow-hidden"
+      ref={ref}
+      itemScope
+      itemType="https://schema.org/MedicalOrganization"
+    >
       <div className="container mx-auto px-5">
         <motion.div
           className="text-center mb-12"
@@ -60,9 +70,14 @@ const GoalsSection = () => {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
           transition={{ duration: 0.7 }}
         >
-          <h2 className="text-3xl font-bold text-sky-800 mb-2">أهدافنا</h2>
+          <h2
+            className="text-3xl font-bold text-sky-800 mb-2"
+            itemProp="slogan"
+          >
+            أهدافنا
+          </h2>
           <div className="w-24 h-1 bg-sky-500 mx-auto mb-6"></div>
-          <p className="max-w-2xl mx-auto text-gray-600">
+          <p className="max-w-2xl mx-auto text-gray-600" itemProp="description">
             نسعى لتحقيق مجموعة من الأهداف التي تضمن تقديم أفضل رعاية صحية منزلية
           </p>
         </motion.div>
@@ -94,6 +109,8 @@ const GoalsSection = () => {
                 boxShadow:
                   "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
               }}
+              itemScope
+              itemType={`https://schema.org/${goal.schemaType}`}
             >
               <motion.div
                 className="flex justify-center"
@@ -113,6 +130,7 @@ const GoalsSection = () => {
                   scale: 1.2,
                   transition: { duration: 0.3 },
                 }}
+                itemProp="image"
               >
                 {goal.icon}
               </motion.div>
@@ -121,6 +139,7 @@ const GoalsSection = () => {
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ delay: index * 0.15 + 0.5, duration: 0.3 }}
+                itemProp="name"
               >
                 {goal.title}
               </motion.h3>
@@ -129,6 +148,7 @@ const GoalsSection = () => {
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ delay: index * 0.15 + 0.6, duration: 0.3 }}
+                itemProp="description"
               >
                 {goal.description}
               </motion.p>

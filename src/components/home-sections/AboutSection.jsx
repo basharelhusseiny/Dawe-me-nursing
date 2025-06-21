@@ -89,6 +89,8 @@ const AboutSection = () => {
       id="about"
       className="py-16 bg-gradient-to-b from-white to-sky-200 scroll-mt-17 md:scroll-mt-[71px]"
       ref={ref}
+      itemScope
+      itemType="https://schema.org/MedicalOrganization"
     >
       <div className="container mx-auto px-5">
         <div className="text-center mb-12">
@@ -97,6 +99,7 @@ const AboutSection = () => {
             variants={titleVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
+            itemProp="name"
           >
             من نحن؟
           </motion.h2>
@@ -115,6 +118,7 @@ const AboutSection = () => {
               variants={textVariants}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
+              itemProp="description"
             >
               داوي هو فريق طبي متكامل يقدم خدمات طبية منزلية شاملة، بأيدي أطباء
               وممرضين ومختصين مؤهلين على أعلى مستوى. نسعى لتقديم رعاية صحية
@@ -133,18 +137,21 @@ const AboutSection = () => {
                   y: -10,
                   boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
                 }}
+                itemScope
+                itemType="https://schema.org/Organization"
               >
                 <div className="flex items-center mb-3">
                   <motion.div
                     variants={iconVariants}
                     initial="initial"
                     animate="pulse"
+                    itemProp="image"
                   >
                     <FaEye className="text-sky-600 text-2xl ml-2" />
                   </motion.div>
-                  <h3 className="text-xl font-bold text-sky-600">رؤيتنا</h3>
+                  <h3 className="text-xl font-bold text-sky-600" itemProp="slogan">رؤيتنا</h3>
                 </div>
-                <p>
+                <p itemProp="description">
                   أن نكون الخيار الأول لكل أسرة تبحث عن رعاية طبية منزلية
                   موثوقة، وأن نرتقي بجودة الخدمة الصحية في كل بيت.
                 </p>
@@ -160,18 +167,21 @@ const AboutSection = () => {
                   y: -10,
                   boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
                 }}
+                itemScope
+                itemType="https://schema.org/Organization"
               >
                 <div className="flex items-center mb-3">
                   <motion.div
                     variants={iconVariants}
                     initial="initial"
                     animate="pulse"
+                    itemProp="image"
                   >
                     <FaHandHoldingHeart className="text-sky-600 text-2xl ml-2" />
                   </motion.div>
-                  <h3 className="text-xl font-bold text-sky-600">رسالتنا</h3>
+                  <h3 className="text-xl font-bold text-sky-600" itemProp="slogan">رسالتنا</h3>
                 </div>
-                <p>
+                <p itemProp="mission">
                   نقدم رعاية صحية متكاملة في المنزل، بلمسة إنسانية، وسرعة
                   استجابة، وجودة مضمونة، لتوفير راحة وسلامة للمريض.
                 </p>
@@ -195,13 +205,21 @@ const AboutSection = () => {
               >
                 <Image
                   src="/images/pexels-pavel-danilyuk-7653084.jpg"
-                  alt="فريق داوي الطبي"
+                  alt="فريق داوي الطبي يقدم الرعاية الصحية المنزلية"
                   fill
                   className="object-cover"
+                  priority
+                  itemProp="image"
                 />
               </motion.div>
             </div>
           </motion.div>
+        </div>
+
+        {/* بيانات منظمة إضافية مخفية */}
+        <div className="hidden" itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
+          <span itemProp="addressLocality">القاهرة</span>
+          <span itemProp="addressRegion">مصر</span>
         </div>
       </div>
     </section>
